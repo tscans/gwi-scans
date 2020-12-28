@@ -1,0 +1,30 @@
+{
+  "name": "gwi-scans",
+  "version": "1.1.0",
+  "description": "Very small library that makes working with DOM event emitters API a little easier to work with",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "",
+    "prepublish": "npm test"
+  },
+  "keywords": [
+    "events",
+    "eventemitter",
+    "util"
+  ],
+  "author": "Cameron Nokes",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^22.1.4",
+    "@types/node": "^9.6.61",
+    "jest": "^22.4.2",
+    "ts-jest": "^22.4.1",
+    "typescript": "^4.0.3"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.9",
+    "express": "^4.17.1"
+  }
+}
