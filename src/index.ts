@@ -82,17 +82,16 @@ export enum ELoan{
 }
 
 export enum EPlanItems {
-    dob = "dob",
-    sex = "sex",
-    race = "race",
-    education = "education",
-    relationship = "relationship",
-    zipCode = "zipCode",
+    demographics = "demographics",
     employmentAndSalary = "employmentAndSalary",
     housing = "housing",
-    otherSpending = "otherSpending",
-    loans = 'loans',
-    investments = 'investments'
+    loans = "loans",
+    investments = "investments",
+    children = "children",
+    automobiles = "automobiles",
+    educationList = "educationList",
+    largePayments = "largePayments",
+    businesses = 'businesses'
 }
 
 export interface IHousing{
@@ -273,6 +272,7 @@ export interface IMetaPlans{
     firstName:string;
     lastName:string;
     isPublic:boolean;
+    isAllowedToDuplicate:boolean;
     planName:string;
     description:string;
 }
@@ -314,6 +314,7 @@ export interface IUtil{
     changePlanEditorEditingId:(obj:IPEId | null)=>void;
     metaPlansApiDistribution:(metaPlans:IMetaPlans[])=>void;
     downloadAndSetPlan:(selectedPlanId:string)=>void;
+    saveMetaPlan:(metaPlans:IMetaPlans)=>void;
 }
 
 export enum EUtil{
@@ -326,7 +327,8 @@ export enum EUtil{
     planEditorEditingId = "planEditorEditingId",
     changePlanEditorEditingId = "changePlanEditorEditingId",
     metaPlansApiDistribution = "metaPlansApiDistribution",
-    downloadAndSetPlan = "downloadAndSetPlan"
+    downloadAndSetPlan = "downloadAndSetPlan",
+    saveMetaPlan = "saveMetaPlan"
 }
 
 export interface IMatchRoutes{
