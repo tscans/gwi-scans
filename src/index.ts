@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
+
 export interface IDemographics{
     dob:string | null;
     sex:string | null;
@@ -38,6 +39,9 @@ export interface IPlanIteratable{
     largePayments:ILargePayments[],
     businesses:IBusinesses[]
 }
+
+export interface IPlanInterableObjects extends IEmploymentAndSalary, IHousing, ILoan, IInvestment, 
+IChildren, IAutomobile, IEducation, ILargePayments, IBusinesses{}
 
 export enum EHousing{
     livingSituation = "livingSituation",
@@ -100,9 +104,9 @@ export interface IHousing{
     monthlyHousingSpending: number;
     isCurrent:boolean;
     startMonth:number;
-    endMonth:number;
+    endMonth:number | null;
     startYear:number;
-    endYear:number;
+    endYear:number | null;
     homePrice:number;
     downPayment:number;
     lengthOfLoan:number;
@@ -153,8 +157,8 @@ export interface IInvestment{
     startMonth:number;
     startYear:number;
     isCurrent:boolean;
-    endMonth:number;
-    endYear:number;
+    endMonth:number | null;
+    endYear:number | null;
     isSiphon:boolean;
     isSiphonPercent:boolean;
     siphonPercent:number;
@@ -193,8 +197,8 @@ export interface IAutomobile{
     startMonth:number;
     startYear:number;
     isCurrent:boolean;
-    endMonth:boolean;
-    endYear:boolean;
+    endMonth:number | null;
+    endYear:number | null;
     vehicleType:EVehicleType;
     initialVehicleCost:number;
     interestRate:number;
@@ -238,8 +242,8 @@ export interface ILargePayments{
     startYear:number;
     isCurrent:boolean;
     isReoccurring:boolean;
-    endMonth:boolean;
-    endYear:boolean;
+    endMonth:number | null;
+    endYear:number | null;
     periodType:EPaymentPeriodType;
     paymentAmount:number;
     isPaying:boolean;
@@ -250,9 +254,9 @@ export interface IBusinesses{
     businessName:string;
     startMonth:number;
     startYear:number;
-    isCurrent:number;
-    endMonth:number;
-    endYear:number;
+    isCurrent:boolean;
+    endMonth:number | null;
+    endYear:number | null;
     
 }
 
@@ -367,6 +371,84 @@ export interface IProfile{
     uid:string;
 }
 
+export interface IZipData{
+    city: string;
+    county: string;
+    geoId: string;
+    housingUnits: number;
+    laborForceOverAge16: number;
+    meanError: number;
+    meanIncome: number;
+    medIncAge25Under: number;
+    medIncAge25UnderErr: number;
+    medIncAge65Up: number;
+    medIncAge65UpErr: number;
+    medIncAge2544: number;
+    medIncAge2544Err: number;
+    medIncAge4564: number;
+    medIncAge4564Err: number;
+    medianAge: number;
+    medianError: number;
+    medianHouseholdIncome: number;
+    medianUnitValue: number;
+    numFamilies: number;
+    numH2550: number;
+    numH5075: number;
+    numH75100: number;
+    numH100150: number;
+    numH150200: number;
+    numHOver200: number;
+    numHUnder25: number;
+    numHouseholds: number;
+    numHouseholds2: number;
+    numMarried: number;
+    numMarriedWithChildren: number;
+    numNonFamilies: number;
+    numSingleParentFamilies: number;
+    numSingleParentWithChildren: number;
+    perCapitaIncome: number;
+    perCapitaIncomeErr: number;
+    percBachelors: number;
+    percGraduate: number;
+    percHighSchool: number;
+    percNoDiploma: number;
+    percSomeCollege: number;
+    percentHouseholds200k: number;
+    percentHouseholds200kErr: number;
+    popAgeOver25: number;
+    popAsian: number;
+    popBlack: number;
+    popDensity: number;
+    popF09: number;
+    popF70Up: number;
+    popF1019: number;
+    popF2029: number;
+    popF3039: number;
+    popF4049: number;
+    popF5059: number;
+    popF6069: number;
+    popHispanic: number;
+    popIslander: number;
+    popM09: number;
+    popM70Up: number;
+    popM1019: number;
+    popM2029: number;
+    popM3039: number;
+    popM4049: number;
+    popM5059: number;
+    popM6069: number;
+    popNative: number;
+    popOther: number;
+    popTwo:number;
+    popWhite: number;
+    population: number;
+    population2: number;
+    povertyFamilyPercent: number;
+    povertyHouseholds: number;
+    unemploymentRate: number;
+    usState: string;
+    zipCode: string;
+}
 //data structures
 
 export const basicPlanLayout = {
@@ -389,4 +471,34 @@ export const basicPlanLayout = {
     educationList:[],
     largePayments:[],
     businesses:[]
+}
+
+export const demographicCategoryEntries = {
+    age:["babyBoomer","generationX","millennial","silent"],
+    race:["white","black","hispanic","indian","asian","other"],
+    school:["high","highGrad","someCollege","bach","master"],
+    sex:["1","2"]
+}
+
+
+export enum EwsjCategories{
+    age = "age",
+    race = "race",
+    school = "school",
+    sex = "sex"
+}
+
+export interface IwsjQuery{
+    age:string | null;
+    race:string | null;
+    school:string | null;
+    sex:string | null;
+}
+
+export interface IwsjResult{
+    percentiles:number[];
+    sample:number;
+    id:string;
+    minIncome:number;
+    maxIncome:number;
 }
