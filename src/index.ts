@@ -44,6 +44,7 @@ export interface IPlanInterableObjects extends IEmploymentAndSalary, IHousing, I
 IChildren, IAutomobile, IEducation, ILargePayments, IBusinesses{}
 
 export enum EHousing{
+    housingName = "housingName",
     livingSituation = "livingSituation",
     housingSpending = "housingSpending",
     monthlyHousingSpending = "monthlyHousingSpending",
@@ -100,6 +101,7 @@ export enum EPlanItems {
 
 export interface IHousing{
     id:string;
+    housingName:string;
     livingSituation:string;
     monthlyHousingSpending: number;
     isCurrent:boolean;
