@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 
 
 export interface IDemographics{
@@ -12,7 +12,8 @@ export interface IDemographics{
 
 export interface IPlan{
     demographics:IDemographics;
-    
+    budgetClaims:IBudgetClaims[];
+
     employmentAndSalary:IEmploymentAndSalary[];
     housing:IHousing[];
     
@@ -27,6 +28,7 @@ export interface IPlan{
 }
 
 export interface IPlanIteratable{
+    budgetClaims:IBudgetClaims[];
     employmentAndSalary:IEmploymentAndSalary[];
     housing:IHousing[];
     
@@ -40,11 +42,10 @@ export interface IPlanIteratable{
     businesses:IBusinesses[]
 }
 
-export interface IPlanInterableObjects extends IEmploymentAndSalary, IHousing, ILoan, IInvestment, 
+export interface IPlanInterableObjects extends IEmploymentAndSalary, IBudgetClaims, IHousing, ILoan, IInvestment, 
 IChildren, IAutomobile, IEducation, ILargePayments, IBusinesses{}
 
 export enum EHousing{
-    housingName = "housingName",
     livingSituation = "livingSituation",
     housingSpending = "housingSpending",
     monthlyHousingSpending = "monthlyHousingSpending",
@@ -88,6 +89,7 @@ export enum ELoan{
 
 export enum EPlanItems {
     demographics = "demographics",
+    budgetClaims = "budgetClaims",
     employmentAndSalary = "employmentAndSalary",
     housing = "housing",
     loans = "loans",
@@ -97,6 +99,22 @@ export enum EPlanItems {
     educationList = "educationList",
     largePayments = "largePayments",
     businesses = 'businesses'
+}
+
+//housing already in its own category
+export interface IBudgetClaims{
+    id:string;
+    food:number;
+    transportation:number;
+    health:number;
+    utilities:number;
+    entertainment:number;
+    other:number;
+    isCurrent:boolean;
+    startMonth:number;
+    endMonth:number | null;
+    startYear:number;
+    endYear:number | null;
 }
 
 export interface IHousing{
@@ -462,6 +480,8 @@ export const basicPlanLayout = {
         relationship:null,
         zipCode:null
     },
+
+    budgetClaims:[],
 
     employmentAndSalary:[],
     housing:[],
