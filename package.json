@@ -1,7 +1,7 @@
 {
-  "name": "gwi-scans",
-  "version": "1.1.0",
-  "description": "Very small library that makes working with DOM event emitters API a little easier to work with",
+  "name": "scans-genwealth-types",
+  "version": "1.0.0",
+  "description": "GenWealth type file and data",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -10,11 +10,9 @@
     "prepublish": "npm test"
   },
   "keywords": [
-    "events",
-    "eventemitter",
-    "util"
+    "genwealth"
   ],
-  "author": "Cameron Nokes",
+  "author": "Tom Scanlan",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^22.1.4",

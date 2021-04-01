@@ -5,105 +5,84 @@ export interface IDemographics{
     dob:string | null;
     sex:string | null;
     race:string | null;
+    state:string | null;
     education:string | null;
-    relationship:string | null;
+    relationship:ERelationship;
     zipCode:string | null;
 }
 
-export interface IPlan{
-    demographics:IDemographics;
-    budgetClaims:IBudgetClaims[];
-
-    employmentAndSalary:IEmploymentAndSalary[];
-    housing:IHousing[];
-    
-    loans:ILoan[],
-    investments:IInvestment[]
-
-    children:IChildren[],
-    automobiles:IAutomobile[],
-    educationList:IEducation[],
-    largePayments:ILargePayments[],
-    businesses:IBusinesses[]
+export enum ERelationship{
+    Single = "Single",
+    Marries = "Married"
 }
 
-export interface IPlanIteratable{
-    budgetClaims:IBudgetClaims[];
-    employmentAndSalary:IEmploymentAndSalary[];
-    housing:IHousing[];
-    
-    loans:ILoan[],
-    investments:IInvestment[]
-
-    children:IChildren[],
-    automobiles:IAutomobile[],
-    educationList:IEducation[],
-    largePayments:ILargePayments[],
-    businesses:IBusinesses[]
-}
-
-export interface IPlanInterableObjects extends IEmploymentAndSalary, IBudgetClaims, IHousing, ILoan, IInvestment, 
-IChildren, IAutomobile, IEducation, ILargePayments, IBusinesses{}
-
-export enum EHousing{
-    livingSituation = "livingSituation",
-    housingSpending = "housingSpending",
-    monthlyHousingSpending = "monthlyHousingSpending",
-    isCurrent = "isCurrent",
-    startMonth = "startMonth",
-    endMonth = "endMonth",
-    startYear = "startYear",
-    endYear = "endYear",
-    homePrice = "homePrice",
-    downPayment = "downPayment",
-    lengthOfLoan = "lengthOfLoan",
-    interestRate = "interestRate",
-    creditScore = "creditScore",
-    propertyTax = "propertyTax",
-    additionalFees = "additionalFees",
-    zipCode = "zipCode"
-}
-
-export enum EEmploymentAndSalary{
-    id = "id",
-    income = "income",
-    jobName = "jobName",
-    jobSalaryId = "jobSalaryId",
-    isCurrent = "isCurrent",
-    startMonth = "startMonth",
-    endMonth = "endMonth",
-    startYear = "startYear",
-    endYear = "endYear",
-    customJobTitle = "customJobTitle"
-}
-
-export enum ELoan{
-    id = "id",
-    loanName = "loanName",
-    loanAmount = "loanAmount",
-    interestRate = "interestRate",
-    timeInRepayment = "timeInRepayment",
-    monthlyPayment = "monthlyPayment",
-    loanType = "loanType"
-}
-
-export enum EPlanItems {
-    demographics = "demographics",
-    budgetClaims = "budgetClaims",
-    employmentAndSalary = "employmentAndSalary",
-    housing = "housing",
-    loans = "loans",
-    investments = "investments",
-    children = "children",
-    automobiles = "automobiles",
-    educationList = "educationList",
-    largePayments = "largePayments",
-    businesses = 'businesses'
-}
-
-//housing already in its own category
-export interface IBudgetClaims{
+export interface IAssetContribution{
     id:string;
+    isPreTaxDeduction:boolean;
+    assetId:string;
+    contributionIsPercent:boolean;
+    percent:number;
+    flatAmount:number;
+}
+
+export interface IFamilyMembers{
+    id:string;
+    name:string;
+    birthday:number;
+    sex:string;
+    race:string;
+    education:string;
+}
+
+export interface IIncome{
+    id:string;
+    memberOwnerId:string;
+    income:number;
+    jobName:string;
+    jobSalaryId:string;
+    isCurrent:boolean;
+    startMonth:number | null;
+    endMonth:number | null;
+    startYear:number | null;
+    endYear:number | null;
+    customJobTitle:string;
+    geoState:string | null;
+    assetContributions:IAssetContribution[];
+}
+
+export const generateDefaultIncome = (id:string,memberOwnerId:string) => ({
+    id,
+    memberOwnerId,
+    income:40000,
+    jobName:"",
+    jobSalaryId:"",
+    isCurrent:true,
+    startMonth:null,
+    endMonth:null,
+    startYear:null,
+    endYear:null,
+    customJobTitle:"My Job",
+    geoState:null,
+    assetContributions:[]
+}) as IIncome
+
+export interface IAssets{
+    id:string;
+    memberOwnerId:string;
+    investmentName:string;
+    investmentType:string;
+    interestRate:number;
+    currentBalance:number;
+    startMonth:number;
+    startYear:number;
+    isCurrent:boolean;
+    endMonth:number | null;
+    endYear:number | null;
+}
+
+export interface IBudgets{
+    id:string;
+    memberOwnerId:string;
     food:number;
     transportation:number;
     health:number;
@@ -117,41 +96,24 @@ export interface IBudgetClaims{
     endYear:number | null;
 }
 
-export interface IHousing{
+export interface ITransfers{
     id:string;
-    housingName:string;
-    livingSituation:string;
-    monthlyHousingSpending: number;
-    isCurrent:boolean;
+    moneyFrom:string;
+    moneyTo:string;
+    amount:number;
+    transferType:string;
+    transferName:string;
     startMonth:number;
-    endMonth:number | null;
     startYear:number;
+    isCurrent:boolean;
+    isReoccurring:boolean;
+    endMonth:number | null;
     endYear:number | null;
-    homePrice:number;
-    downPayment:number;
-    lengthOfLoan:number;
-    interestRate:number;
-    creditScore:number;
-    propertyTax:number;
-    additionalFees:number;
-    zipCode:string;
 }
 
-export interface IEmploymentAndSalary{
+export interface ILiabilities{
     id:string;
-    income:number;
-    jobName:string;
-    jobSalaryId:string;
-    isCurrent:boolean;
-    startMonth:number;
-    endMonth:number | null;
-    startYear:number;
-    endYear:number | null;
-    customJobTitle:string;
-}
-
-export interface ILoan{
-    id:string;
+    memberOwnerId:string;
     loanName:string;
     loanAmount:number;
     interestRate:number;
@@ -162,28 +124,60 @@ export interface ILoan{
     startYear:number;
 }
 
-export interface IInvestment{
-    id:string;
-    investmentName:string;
-    investmentType:string;
-    interestRate:number;
-    isPercentOfPay:boolean;
-    isEmployerMatching:boolean;
-    percentOfPay:number;
-    percentEmployerMatch:number;
-    percentEmployerMatchUpTo:number;
-    monthlyInvestment:number;
-    currentBalance:number;
-    startMonth:number;
-    startYear:number;
-    isCurrent:boolean;
-    endMonth:number | null;
-    endYear:number | null;
-    isSiphon:boolean;
-    isSiphonPercent:boolean;
-    siphonPercent:number;
-    siphonAmount:number;
+export interface IPlan{
+    //for family members monitoring
+    familyMembers:IFamilyMembers[];
+    //income to build from
+    income:IIncome[];
+    //creating areas to pool
+    assets:IAssets[];
+    //simple budget systems
+    budgets:IBudgets[];
+    //large expenses and moving money
+    transfers:ITransfers[];
+    //loans
+    liabilities:ILiabilities[];
 }
+
+export enum EPlanItems {
+    familyMembers = "familyMembers",
+    income = "income",
+    assets = "assets",
+    budgets = "budgets",
+    transfers = "transfers",
+    liabilities = "liabilities"
+}
+
+// demographics:IDemographics;
+// budgetClaims:IBudgetClaims[];
+
+// employmentAndSalary:IEmploymentAndSalary[];
+// housing:IHousing[];
+
+// loans:ILoan[];
+// investments:IInvestment[];
+// divestments:IDivestment[];
+
+// children:IChildren[];
+// automobiles:IAutomobile[];
+// educationList:IEducation[];
+// largePayments:ILargePayments[];
+// businesses:IBusinesses[];
+
+
+export enum ELivingSituation{
+    own = "Own",
+    ownWithLoan = "Own with loan",
+    planToOwn = "Plan to own",
+    rent = "Rent",
+    liveAtHome = "Live at Home"
+}
+
+//should be option for one time, recurring time
+//allow user to pick the investment it comes from, set percent or exact amount
+//upon deleting an Investment, it needs to check for all divestments that have access to it.
+//
+
 
 export interface IChildren{
     id:string;
@@ -211,80 +205,7 @@ export enum ECantDivestEasily{
     realEstate = "Real Estate (Not your primary home)"
 }
 
-export interface IAutomobile{
-    id:string;
-    vehicleName:string;
-    startMonth:number;
-    startYear:number;
-    isCurrent:boolean;
-    endMonth:number | null;
-    endYear:number | null;
-    vehicleType:EVehicleType;
-    initialVehicleCost:number;
-    interestRate:number;
-    yoyDepreciation:number;
-    monthsInRepayment:number;
-    monthlyPayment:number;
-    isPaidInFull:boolean;
-    otherMonthlyAutoExpenses:number;
-}
 
-export interface IEducationOwner{
-    ownerId:string;
-    ownerName:string;
-}
-
-export interface IEducation{
-    id:string;
-    educationOwner:IEducationOwner;
-    educationName:string;
-    startMonth:number;
-    startYear:number;
-    academicPeriodsInSession:number;
-    tuitionCostPerPeriod:number;
-    roomAndBoardCostPerPeriod:number;
-    isLoanNeeded:boolean;
-    percentOfTotalCost:number;
-    monthsInRepayment:number;
-    interestRate:number;
-}
-
-export enum EPaymentPeriodType{
-    monthly = "monthly",
-    yearly = "yearly"
-}
-
-export interface ILargePayments{
-    id:string;
-    paymentName:string;
-    paymentType:string;
-    startMonth:number;
-    startYear:number;
-    isCurrent:boolean;
-    isReoccurring:boolean;
-    endMonth:number | null;
-    endYear:number | null;
-    periodType:EPaymentPeriodType;
-    paymentAmount:number;
-    isPaying:boolean;
-}
-
-export interface IBusinesses{
-    id:string;
-    businessName:string;
-    startMonth:number;
-    startYear:number;
-    isCurrent:boolean;
-    endMonth:number | null;
-    endYear:number | null;
-    
-}
-
-export interface ILiveValues{
-    jobTitle:string | null;
-    jobSalaryId:string | null;
-    income:number;
-}
 
 export interface IMetaPlans{
     planId:string;
@@ -301,58 +222,14 @@ export interface IMetaPlans{
     description:string;
 }
 
-export enum EMetaPlans{
-    myPlans = "myPlans",
-    sharedPlans = "sharedPlans"
-}
-
-export interface IContext{
-    plan:IPlan;
-    liveValues:ILiveValues;
-    changePlanItem:(key:string,value:any)=>void;
-    changeMultiplePlanItems:(keyValuePairs:Partial<IPlan>)=>void;
-    changeMultipleLiveValues:(keyValuePairs:Partial<ILiveValues>)=>void;
-}
-
-export enum EContext{
-    plan = "plan",
-    liveValues = "liveValues",
-    changePlanItem = "changePlanItem",
-    changeMultiplePlanItems = "changeMultiplePlanItems",
-    changeMultipleLiveValues = "changeMultipleLiveValues"
+export interface IDateFittedPlan{
+    dateIndex:any;
+    planIndex:any;
 }
 
 export interface IPEId{
     editType:string | null;
     editId:string | null;
-}
-
-export interface IUtil{
-    bannerVisualAccessor:string;
-    metaPlans:IMetaPlans[];
-    selectedPlanId:string;
-    powerCineModal:(cineModal:any)=>void;
-    bannerVisualOpen:boolean;
-    toggleBannerVisualOpen:(isOpen:boolean)=>void;
-    planEditorEditingId:IPEId
-    changePlanEditorEditingId:(obj:IPEId | null)=>void;
-    metaPlansApiDistribution:(metaPlans:IMetaPlans[])=>void;
-    downloadAndSetPlan:(selectedPlanId:string)=>void;
-    saveMetaPlan:(metaPlans:IMetaPlans)=>void;
-}
-
-export enum EUtil{
-    bannerVisualAccessor = "bannerVisualAccessor",
-    metaPlans = "metaPlans",
-    selectedPlanId = "selectedPlanId",
-    powerCineModal = "powerCineModal",
-    bannerVisualOpen = "bannerVisualOpen",
-    toggleBannerVisualOpen = "toggleBannerVisualOpen",
-    planEditorEditingId = "planEditorEditingId",
-    changePlanEditorEditingId = "changePlanEditorEditingId",
-    metaPlansApiDistribution = "metaPlansApiDistribution",
-    downloadAndSetPlan = "downloadAndSetPlan",
-    saveMetaPlan = "saveMetaPlan"
 }
 
 export interface IMatchRoutes{
@@ -471,28 +348,14 @@ export interface IZipData{
 }
 //data structures
 
+
 export const basicPlanLayout = {
-    demographics:{
-        dob:null,
-        sex:null,
-        race:null,
-        education:null,
-        relationship:null,
-        zipCode:null
-    },
-
-    budgetClaims:[],
-
-    employmentAndSalary:[],
-    housing:[],
-    loans:[],
-    investments:[],
-
-    children:[],
-    automobiles:[],
-    educationList:[],
-    largePayments:[],
-    businesses:[]
+    familyMembers:[],
+    income:[],
+    assets:[],
+    budgets:[],
+    transfers:[],
+    liabilities:[]
 }
 
 export const demographicCategoryEntries = {
