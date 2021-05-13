@@ -1,3 +1,4 @@
+import { AnyTxtRecord } from 'dns';
 import { Request, Response } from 'express';
 
 
@@ -36,35 +37,33 @@ export interface IFamilyMembers{
 
 export interface IIncome{
     id:string;
-    memberOwnerId:string;
-    income:number;
+    baseIncome:number;
+    bonus:number;
+    equityInvestment:number;
     jobName:string;
     jobSalaryId:string;
     isCurrent:boolean;
-    startMonth:number | null;
-    endMonth:number | null;
-    startYear:number | null;
-    endYear:number | null;
+    dateIdStart:number;
+    dateIdEnd:number | null;
     customJobTitle:string;
     geoState:string | null;
-    assetContributions:IAssetContribution[];
 }
 
-export const generateDefaultIncome = (id:string,memberOwnerId:string) => ({
-    id,
-    memberOwnerId,
-    income:40000,
-    jobName:"",
-    jobSalaryId:"",
-    isCurrent:true,
-    startMonth:null,
-    endMonth:null,
-    startYear:null,
-    endYear:null,
-    customJobTitle:"My Job",
-    geoState:null,
-    assetContributions:[]
-}) as IIncome
+// export const generateDefaultIncome = (id:string,memberOwnerId:string) => ({
+//     id,
+//     memberOwnerId,
+//     income:40000,
+//     jobName:"",
+//     jobSalaryId:"",
+//     isCurrent:true,
+//     startMonth:null,
+//     endMonth:null,
+//     startYear:null,
+//     endYear:null,
+//     customJobTitle:"My Job",
+//     geoState:null,
+//     assetContributions:[]
+// }) as IIncome
 
 export interface IAssets{
     id:string;
@@ -82,33 +81,17 @@ export interface IAssets{
 
 export interface IBudgets{
     id:string;
-    memberOwnerId:string;
     food:number;
-    transportation:number;
     health:number;
     utilities:number;
     entertainment:number;
+    housing:number;
+    auto:number;
     other:number;
     isCurrent:boolean;
-    startMonth:number;
-    endMonth:number | null;
-    startYear:number;
-    endYear:number | null;
-}
-
-export interface ITransfers{
-    id:string;
-    moneyFrom:string;
-    moneyTo:string;
-    amount:number;
-    transferType:string;
-    transferName:string;
-    startMonth:number;
-    startYear:number;
-    isCurrent:boolean;
-    isReoccurring:boolean;
-    endMonth:number | null;
-    endYear:number | null;
+    dateIdStart:number;
+    endIdStart:number | null;
+    budgetAdjustmentName:string;
 }
 
 export interface ILiabilities{
@@ -124,6 +107,12 @@ export interface ILiabilities{
     startYear:number;
 }
 
+export interface IRetirement{
+    id:string;
+    memberOwnerId:string;
+    
+}
+
 export interface IPlan{
     //for family members monitoring
     familyMembers:IFamilyMembers[];
@@ -134,9 +123,60 @@ export interface IPlan{
     //simple budget systems
     budgets:IBudgets[];
     //large expenses and moving money
-    transfers:ITransfers[];
+    //transfers:ITransfers[];
     //loans
     liabilities:ILiabilities[];
+}
+
+export interface IUserAccounts{
+    id:string;
+    cashAccounts:number;
+    investmentsBalance:number;
+    retirementInvestmentBalance:number;
+    dateId:number;
+    isCurrent:boolean;
+}
+
+export interface IEconomicAssumptions{
+    autoInvestRule:/*for auto investing cash over certain value */boolean;
+    inflationRate:number;
+    taxRates:boolean;//eh maybe
+    homeAppreciationRate:number;
+    investmentReturnRate:number;
+}
+
+export interface IExpenses{
+    id:string;
+    isRepeating:boolean;
+    expenseDateId:number;
+    repeatingMonthId:number;
+    repeatingStartDateId:number;
+    repeatingEndDateId:number;
+    amountExpensed:number;
+    expenseName:string;
+}
+
+export interface IEarnings{
+    id:string;
+    isRepeating:boolean;
+    earningDateId:number;
+    repeatingMonthId:number;
+    repeatingStartDateId:number;
+    repeatingEndDateId:number;
+    amountEarned:number;
+    earningName:string;
+}
+
+export interface IFinancialPlan{
+    income:IIncome[];
+    children:IChildren[];
+    budgets:IBudgets[];
+    liabilities:ILiabilities[];
+    assets:IAssets[];
+    expenses:IExpenses[];
+    earnings:IEarnings[];
+    userAccounts:IUserAccounts[];
+    economicAssumptions:IEconomicAssumptions;
 }
 
 export enum EPlanItems {
@@ -182,8 +222,8 @@ export enum ELivingSituation{
 export interface IChildren{
     id:string;
     childName:string;
-    startMonth:number;
-    startYear:number;
+    birthDateId:number;
+    initialChildExpenses:number;
     monthlyChildCost:number;
     isPrivateSchool:boolean;
     privateTuitionK8:number;
