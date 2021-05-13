@@ -67,16 +67,13 @@ export interface IIncome{
 
 export interface IAssets{
     id:string;
-    memberOwnerId:string;
     investmentName:string;
     investmentType:string;
     interestRate:number;
     currentBalance:number;
-    startMonth:number;
-    startYear:number;
+    dateIdStart:number;
+    dateIdEnd:number;
     isCurrent:boolean;
-    endMonth:number | null;
-    endYear:number | null;
 }
 
 export interface IBudgets{
@@ -96,21 +93,13 @@ export interface IBudgets{
 
 export interface ILiabilities{
     id:string;
-    memberOwnerId:string;
     loanName:string;
     loanAmount:number;
     interestRate:number;
-    monthsInRepayment:number;
     monthlyPayment:number;
     loanType:string;
-    startMonth:number;
-    startYear:number;
-}
-
-export interface IRetirement{
-    id:string;
-    memberOwnerId:string;
-    
+    dateIdStart:number;
+    dateIdEnd:number;
 }
 
 export interface IPlan{
@@ -133,16 +122,18 @@ export interface IUserAccounts{
     cashAccounts:number;
     investmentsBalance:number;
     retirementInvestmentBalance:number;
+    generalInvestmentRate:number;
+    retirementInvestmentRate:number;
     dateId:number;
     isCurrent:boolean;
 }
 
 export interface IEconomicAssumptions{
     autoInvestRule:/*for auto investing cash over certain value */boolean;
+    autoInvestLimitAmount:number;
     inflationRate:number;
-    taxRates:boolean;//eh maybe
-    homeAppreciationRate:number;
-    investmentReturnRate:number;
+    //future option for inflation rate modifier for lifetime
+    taxRates:boolean;//eh maybe, adding boolean for now.
 }
 
 export interface IExpenses{
@@ -150,8 +141,8 @@ export interface IExpenses{
     isRepeating:boolean;
     expenseDateId:number;
     repeatingMonthId:number;
-    repeatingStartDateId:number;
-    repeatingEndDateId:number;
+    repeatingDateIdStart:number;
+    repeatingDateIdEnd:number;
     amountExpensed:number;
     expenseName:string;
 }
@@ -161,8 +152,8 @@ export interface IEarnings{
     isRepeating:boolean;
     earningDateId:number;
     repeatingMonthId:number;
-    repeatingStartDateId:number;
-    repeatingEndDateId:number;
+    repeatingDateIdStart:number;
+    repeatingDateIdEnd:number;
     amountEarned:number;
     earningName:string;
 }
