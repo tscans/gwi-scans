@@ -47,6 +47,10 @@ export interface IIncome{
     dateIdEnd:number | null;
     customJobTitle:string;
     geoState:string | null;
+    retirementContributionPercent:number;
+    employerMatches:boolean;
+    employerMatchesPercent:number;
+    employerMatchesUpToPercent:number;
 }
 
 // export const generateDefaultIncome = (id:string,memberOwnerId:string) => ({
@@ -134,6 +138,7 @@ export interface IEconomicAssumptions{
     inflationRate:number;
     //future option for inflation rate modifier for lifetime
     taxRates:boolean;//eh maybe, adding boolean for now.
+    dateIdMarriage:number | null;
 }
 
 export interface IExpenses{
