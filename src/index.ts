@@ -139,6 +139,8 @@ export interface IEconomicAssumptions{
     //future option for inflation rate modifier for lifetime
     taxRates:boolean;//eh maybe, adding boolean for now.
     dateIdMarriage:number | null;
+    userBirthDateId:number;
+    preferredZipCode:string;
 }
 
 export interface IExpenses{
