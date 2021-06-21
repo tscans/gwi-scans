@@ -12,6 +12,36 @@ export interface IDemographics{
     zipCode:string | null;
 }
 
+export enum EMonthToId{
+    January = 1,
+    February = 2,
+    March = 3,
+    April = 4,
+    May = 5,
+    June = 6,
+    July = 7,
+    August = 8,
+    September = 9,
+    October = 10,
+    November = 11,
+    December = 12
+}
+
+export const monthListArray = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+
 export enum ERelationship{
     Single = "Single",
     Marries = "Married"
@@ -67,10 +97,18 @@ export interface IIncome{
 //     assetContributions:[]
 // }) as IIncome
 
+export enum IAssetType{
+    realEstate = "Real Estate",
+    cars = "Cars, Boats, and Other Vehicles",
+    art = "Artwork and Collectibles",
+    patents = "Patents, Copyrights, Trademarks",
+    business = "Businesses and IP"
+}
+
 export interface IAssets{
     id:string;
-    investmentName:string;
-    investmentType:string;
+    assetName:string;
+    assetType:IAssetType;
     interestRate:number;
     currentBalance:number;
     dateIdStart:number;
@@ -95,6 +133,7 @@ export interface IBudgets{
 
 export enum ELiabilityType{
     auto = "Auto Loan",
+    student = "Student/Education Loan",
     personal = "Personal Loan",
     creditCard = "Credit Card Loan",
     smallBusiness = "Small Business Loan",
@@ -154,6 +193,7 @@ export interface IExpenses{
     id:string;
     isRepeating:boolean;
     expenseDateId:number;
+    isRepeatingIndefinite:boolean;
     repeatingMonthId:number;
     repeatingDateIdStart:number;
     repeatingDateIdEnd:number;
@@ -165,6 +205,7 @@ export interface IEarnings{
     id:string;
     isRepeating:boolean;
     earningDateId:number;
+    isRepeatingIndefinite:boolean;
     repeatingMonthId:number;
     repeatingDateIdStart:number;
     repeatingDateIdEnd:number;
