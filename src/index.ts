@@ -38,8 +38,6 @@ export interface IFamilyMembers{
 export interface IIncome{
     id:string;
     baseIncome:number;
-    bonus:number;
-    equityInvestment:number;
     jobName:string;
     jobSalaryId:string;
     isCurrent:boolean;
@@ -95,31 +93,40 @@ export interface IBudgets{
     budgetAdjustmentName:string;
 }
 
+export enum ELiabilityType{
+    auto = "Auto Loan",
+    personal = "Personal Loan",
+    creditCard = "Credit Card Loan",
+    smallBusiness = "Small Business Loan",
+    housing = "Housing Loan",
+    other = "Other Loan"
+}
+
 export interface ILiabilities{
     id:string;
     loanName:string;
     loanAmount:number;
     interestRate:number;
     monthlyPayment:number;
-    loanType:string;
+    loanType:ELiabilityType;
     dateIdStart:number;
     dateIdEnd:number;
 }
 
-export interface IPlan{
-    //for family members monitoring
-    familyMembers:IFamilyMembers[];
-    //income to build from
-    income:IIncome[];
-    //creating areas to pool
-    assets:IAssets[];
-    //simple budget systems
-    budgets:IBudgets[];
-    //large expenses and moving money
-    //transfers:ITransfers[];
-    //loans
-    liabilities:ILiabilities[];
-}
+// export interface IPlan{
+//     //for family members monitoring
+//     familyMembers:IFamilyMembers[];
+//     //income to build from
+//     income:IIncome[];
+//     //creating areas to pool
+//     assets:IAssets[];
+//     //simple budget systems
+//     budgets:IBudgets[];
+//     //large expenses and moving money
+//     //transfers:ITransfers[];
+//     //loans
+//     liabilities:ILiabilities[];
+// }
 
 export interface IUserAccounts{
     id:string;
@@ -226,6 +233,7 @@ export interface IChildren{
     isPrivateSchool:boolean;
     privateTuitionK8:number;
     privateTuitionHS:number;
+    collegeTuition:number;
     ageOfSupportEnd:number;
 }
 

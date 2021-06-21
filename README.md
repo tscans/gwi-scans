@@ -1,4 +1,4 @@
-# GenWealth Type File
+l# GenWealth Type File
 
 Steps to Publish
 1. Update the version number.
