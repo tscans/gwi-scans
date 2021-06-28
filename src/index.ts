@@ -72,30 +72,14 @@ export interface IIncome{
     jobSalaryId:string;
     isCurrent:boolean;
     dateIdStart:number;
-    dateIdEnd:number | null;
+    dateIdEnd:number;
     customJobTitle:string;
-    geoState:string | null;
+    geoState:string;
     retirementContributionPercent:number;
     employerMatches:boolean;
     employerMatchesPercent:number;
     employerMatchesUpToPercent:number;
 }
-
-// export const generateDefaultIncome = (id:string,memberOwnerId:string) => ({
-//     id,
-//     memberOwnerId,
-//     income:40000,
-//     jobName:"",
-//     jobSalaryId:"",
-//     isCurrent:true,
-//     startMonth:null,
-//     endMonth:null,
-//     startYear:null,
-//     endYear:null,
-//     customJobTitle:"My Job",
-//     geoState:null,
-//     assetContributions:[]
-// }) as IIncome
 
 export enum IAssetType{
     realEstate = "Real Estate",
@@ -127,7 +111,7 @@ export interface IBudgets{
     other:number;
     isCurrent:boolean;
     dateIdStart:number;
-    endIdStart:number | null;
+    dateIdEnd:number;
     budgetAdjustmentName:string;
 }
 
@@ -151,21 +135,6 @@ export interface ILiabilities{
     dateIdStart:number;
     dateIdEnd:number;
 }
-
-// export interface IPlan{
-//     //for family members monitoring
-//     familyMembers:IFamilyMembers[];
-//     //income to build from
-//     income:IIncome[];
-//     //creating areas to pool
-//     assets:IAssets[];
-//     //simple budget systems
-//     budgets:IBudgets[];
-//     //large expenses and moving money
-//     //transfers:ITransfers[];
-//     //loans
-//     liabilities:ILiabilities[];
-// }
 
 export interface IUserAccounts{
     id:string;
