@@ -1,5 +1,5 @@
 import { AnyTxtRecord } from 'dns';
-import { Request, Response } from 'express';
+import e, { Request, Response } from 'express';
 import { structure } from './structures/economicAssumptions';
 
 
@@ -456,3 +456,5 @@ export const createInitialTimeline = () : IFinancialPlan => ({
     userAccounts: [],
     economicAssumptions: structure()
 })
+
+export const tempFunc = () => structure();
