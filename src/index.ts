@@ -456,5 +456,3 @@ export const createInitialTimeline = () : IFinancialPlan => ({
     userAccounts: [],
     economicAssumptions: structure()
 })
-
-export const tempFunc = () => structure();

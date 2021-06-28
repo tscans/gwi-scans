@@ -1,4 +1,9 @@
-export const randomId = () => Math.random().toString(36).substring(10);
+export const randomId = () => {
+    const dateString = Date.now().toString(36);
+    const randomness = Math.random().toString(36).substr(2);
+    return dateString + randomness;
+};
+  
 export const getCurrentDateId = () => {
     const month = new Date().getMonth() + 1;
     return parseInt(`${(new Date().getFullYear())}${ month < 10 ? "0" : "" }${month}`);
