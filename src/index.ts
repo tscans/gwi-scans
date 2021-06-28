@@ -1,5 +1,6 @@
 import { AnyTxtRecord } from 'dns';
 import { Request, Response } from 'express';
+import { structure } from './structures/economicAssumptions';
 
 
 export interface IDemographics{
@@ -443,3 +444,15 @@ export interface IwsjResult{
     minIncome:number;
     maxIncome:number;
 }
+
+export const createInitialTimeline = () : IFinancialPlan => ({
+    income:[],
+    children:[],
+    budgets: [],
+    liabilities: [],
+    assets: [],
+    expenses: [],
+    earnings: [],
+    userAccounts: [],
+    economicAssumptions: structure()
+})
