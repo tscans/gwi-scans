@@ -17,7 +17,7 @@ export const structure = () : IExpenses => ({
 //ask Alex Wolek for a better word than sanitize
 //need standard dates
 
-export const contrains : IConstraints = {
+export const constraints : IConstraints = {
     numeric:{
         amountExpensed:{
             min:0,

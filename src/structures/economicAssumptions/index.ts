@@ -12,7 +12,7 @@ export const structure = () : IEconomicAssumptions => ({
     preferredZipCode:"60655"
 });
 
-export const contrains : IConstraints = {
+export const constraints : IConstraints = {
     numeric:{
         autoInvestLimitAmount:{
             min:0,

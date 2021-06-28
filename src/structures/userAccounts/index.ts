@@ -13,7 +13,7 @@ export const structure = () : IUserAccounts => ({
     isCurrent:true
 });
 
-export const contrains : IConstraints = {
+export const constraints : IConstraints = {
     numeric:{
         cashAccounts:{
             min:0,

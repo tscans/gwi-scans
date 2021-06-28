@@ -21,7 +21,7 @@ export const structure = () : IIncome => ({
 //ask Alex Wolek for a better word than sanitize
 //need standard dates
 
-export const contrains : IConstraints = {
+export const constraints : IConstraints = {
     numeric:{
         baseIncome:{
             min:0,
