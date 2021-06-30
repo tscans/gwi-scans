@@ -154,7 +154,8 @@ export interface IEconomicAssumptions{
     inflationRate:number;
     //future option for inflation rate modifier for lifetime
     taxRates:boolean;//eh maybe, adding boolean for now.
-    dateIdMarriage:number | null;
+    isMarried:boolean;
+    dateIdMarriage:number;
     userBirthDateId:number;
     preferredZipCode:string;
 }
