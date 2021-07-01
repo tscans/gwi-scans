@@ -17,8 +17,19 @@ export const structure = () : IBudgets => ({
     budgetAdjustmentName:"My Budget"
 });
 
-//ask Alex Wolek for a better word than sanitize
-//need standard dates
+export const sorter = (arr:IBudgets[],reverse:boolean) =>{
+    let one = reverse ? -1 : 1;
+    let nOne = reverse ? 1 : -1;
+    return arr.sort((a:IBudgets, b:IBudgets) => { 
+        if(a.isCurrent && !b.isCurrent){
+            return one;
+        }
+        else if(!a.isCurrent && b.isCurrent){
+            return nOne;
+        }
+        return a.dateIdStart - b.dateIdStart ? one : nOne;
+    })
+}
 
 export const constraints : IConstraints = {
     numeric:{

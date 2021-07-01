@@ -13,6 +13,20 @@ export const structure = () : IUserAccounts => ({
     isCurrent:true
 });
 
+export const sorter = (arr:IUserAccounts[],reverse:boolean) =>{
+    let one = reverse ? -1 : 1;
+    let nOne = reverse ? 1 : -1;
+    return arr.sort((a:IUserAccounts, b:IUserAccounts) => { 
+        if(a.isCurrent && !b.isCurrent){
+            return one;
+        }
+        else if(!a.isCurrent && b.isCurrent){
+            return nOne;
+        }
+        return a.dateId - b.dateId ? one : nOne;
+    })
+}
+
 export const constraints : IConstraints = {
     numeric:{
         cashAccounts:{

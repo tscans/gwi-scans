@@ -14,8 +14,21 @@ export const structure = () : IEarnings => ({
     earningName:"My Big Purchase"
 });
 
-//ask Alex Wolek for a better word than sanitize
-//need standard dates
+export const sorter = (arr:IEarnings[],reverse:boolean) =>{
+    let one = reverse ? -1 : 1;
+    let nOne = reverse ? 1 : -1;
+    return arr.sort((a:IEarnings, b:IEarnings) => { 
+        const a_start = a.isRepeating ? a.repeatingDateIdEnd : a.earningDateId;
+        const b_start = b.isRepeating ? b.repeatingDateIdEnd : b.earningDateId;
+        if(a.isRepeatingIndefinite && !b.isRepeatingIndefinite){
+            return one;
+        }
+        else if(!a.isRepeatingIndefinite && b.isRepeatingIndefinite){
+            return nOne;
+        }
+        return a_start - b_start ? one : nOne;
+    })
+}
 
 export const constraints : IConstraints = {
     numeric:{

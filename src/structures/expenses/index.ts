@@ -14,8 +14,21 @@ export const structure = () : IExpenses => ({
     expenseName:"My Big Purchase"
 });
 
-//ask Alex Wolek for a better word than sanitize
-//need standard dates
+export const sorter = (arr:IExpenses[],reverse:boolean) =>{
+    let one = reverse ? -1 : 1;
+    let nOne = reverse ? 1 : -1;
+    return arr.sort((a:IExpenses, b:IExpenses) => { 
+        const a_start = a.isRepeating ? a.repeatingDateIdEnd : a.expenseDateId;
+        const b_start = b.isRepeating ? b.repeatingDateIdEnd : b.expenseDateId;
+        if(a.isRepeatingIndefinite && !b.isRepeatingIndefinite){
+            return one;
+        }
+        else if(!a.isRepeatingIndefinite && b.isRepeatingIndefinite){
+            return nOne;
+        }
+        return a_start - b_start ? one : nOne;
+    })
+}
 
 export const constraints : IConstraints = {
     numeric:{

@@ -15,8 +15,13 @@ export const structure = () : IChildren => ({
     ageOfSupportEnd:22
 });
 
-//ask Alex Wolek for a better word than sanitize
-//need standard dates
+export const sorter = (arr:IChildren[],reverse:boolean) =>{
+    let one = reverse ? -1 : 1;
+    let nOne = reverse ? 1 : -1;
+    return arr.sort((a:IChildren, b:IChildren) => {
+        return a.birthDateId - b.birthDateId ? one : nOne;
+    })
+}
 
 export const constraints : IConstraints = {
     numeric:{
