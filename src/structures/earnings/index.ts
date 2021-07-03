@@ -8,7 +8,7 @@ export const structure = () : IEarnings => ({
     earningDateId:getCurrentDateId(),
     isRepeatingIndefinite:false,
     repeatingDateIdEnd:getCurrentDateId() + ONE_YEAR,
-    repeatingMonthId:1,
+    repeatingMonthId:[1],
     repeatingDateIdStart:getCurrentDateId(),
     amountEarned:10000,
     earningName:"My Big Purchase"

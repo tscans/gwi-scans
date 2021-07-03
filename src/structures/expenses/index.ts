@@ -8,7 +8,7 @@ export const structure = () : IExpenses => ({
     expenseDateId:getCurrentDateId(),
     isRepeatingIndefinite:false,
     repeatingDateIdEnd:getCurrentDateId() + ONE_YEAR,
-    repeatingMonthId:1,
+    repeatingMonthId:[1],
     repeatingDateIdStart:getCurrentDateId(),
     amountExpensed:10000,
     expenseName:"My Big Purchase"

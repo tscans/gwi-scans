@@ -165,7 +165,7 @@ export interface IExpenses{
     isRepeating:boolean;
     expenseDateId:number;
     isRepeatingIndefinite:boolean;
-    repeatingMonthId:number;
+    repeatingMonthId:number[];
     repeatingDateIdStart:number;
     repeatingDateIdEnd:number;
     amountExpensed:number;
@@ -177,7 +177,7 @@ export interface IEarnings{
     isRepeating:boolean;
     earningDateId:number;
     isRepeatingIndefinite:boolean;
-    repeatingMonthId:number;
+    repeatingMonthId:number[];
     repeatingDateIdStart:number;
     repeatingDateIdEnd:number;
     amountEarned:number;
