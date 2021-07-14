@@ -66,9 +66,15 @@ export interface IFamilyMembers{
     education:string;
 }
 
+export interface IIncomePercentChanged{
+    percentChangeFromBase: number;
+    dateIdChange: number;
+}
+
 export interface IIncome{
     id:string;
     baseIncome:number;
+    incomePercentChangedList:IIncomePercentChanged[];
     jobName:string;
     jobSalaryId:string;
     isCurrent:boolean;
@@ -83,6 +89,7 @@ export interface IIncome{
 }
 
 export enum IAssetType{
+    stocks = "Stocks/Investments",
     realEstate = "Real Estate",
     cars = "Cars, Boats, and Other Vehicles",
     art = "Artwork and Collectibles",
@@ -99,6 +106,7 @@ export interface IAssets{
     dateIdStart:number;
     dateIdEnd:number;
     isCurrent:boolean;
+    shouldTaxCapitalGainLiquify:boolean;
 }
 
 export interface IBudgets{
@@ -139,6 +147,7 @@ export interface ILiabilities{
 
 export interface IUserAccounts{
     id:string;
+    userAccountName:string;
     cashAccounts:number;
     investmentsBalance:number;
     retirementInvestmentBalance:number;
@@ -182,6 +191,7 @@ export interface IEarnings{
     repeatingDateIdEnd:number;
     amountEarned:number;
     earningName:string;
+    shouldBeTaxed:boolean;
 }
 
 export interface IFinancialPlan{

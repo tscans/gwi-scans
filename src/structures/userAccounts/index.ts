@@ -10,7 +10,8 @@ export const structure = () : IUserAccounts => ({
     generalInvestmentRate:0.03,
     retirementInvestmentRate:0.05,
     dateId:getCurrentDateId(),
-    isCurrent:true
+    isCurrent:true,
+    userAccountName:"My Financial Accounts"
 });
 
 export const sorter = (arr:IUserAccounts[],reverse:boolean) =>{

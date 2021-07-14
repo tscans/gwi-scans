@@ -11,7 +11,8 @@ export const structure = () : IEarnings => ({
     repeatingMonthId:[1],
     repeatingDateIdStart:getCurrentDateId(),
     amountEarned:10000,
-    earningName:"My Big Purchase"
+    earningName:"My Big Purchase",
+    shouldBeTaxed:false
 });
 
 export const sorter = (arr:IEarnings[],reverse:boolean) =>{

@@ -5,6 +5,7 @@ import { MAX_DATE, MIN_DATE, ONE_YEAR } from "../standards";
 export const structure = () : IIncome => ({
     id:randomId(),
     baseIncome:40000,
+    incomePercentChangedList:[],
     jobName:"All Occupations",
     jobSalaryId: "00-0000",
     isCurrent:true,

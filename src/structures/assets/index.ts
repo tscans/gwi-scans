@@ -10,7 +10,8 @@ export const structure = () : IAssets => ({
     assetType:IAssetType.realEstate,
     isCurrent:true,
     dateIdStart:getCurrentDateId(),
-    dateIdEnd:getCurrentDateId() + ONE_YEAR
+    dateIdEnd:getCurrentDateId() + ONE_YEAR,
+    shouldTaxCapitalGainLiquify:true
 });
 
 export const sorter = (arr:IAssets[],reverse:boolean) =>{
