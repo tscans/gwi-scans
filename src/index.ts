@@ -69,6 +69,7 @@ export interface IFamilyMembers{
 export interface IIncomePercentChanged{
     percentChangeFromBase: number;
     dateIdChange: number;
+    isLinearRaise: boolean;
 }
 
 export interface IIncome{
@@ -167,6 +168,7 @@ export interface IEconomicAssumptions{
     dateIdMarriage:number;
     userBirthDateId:number;
     preferredZipCode:string;
+    preferredRetirementDateId:number;
 }
 
 export interface IExpenses{

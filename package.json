@@ -1,17 +1,16 @@
 {
   "name": "scans-genwealth-types",
-  "version": "1.1.6",
+  "version": "1.1.17",
   "description": "GenWealth type file and data",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "",
-    "prepublish": "npm test"
+    "prepublish": "npm test",
+    "go": "node ./nodeEditor.js && tsc && git add . && git commit -m 'update' && npm publish"
   },
-  "keywords": [
-    "genwealth"
-  ],
+  "keywords": [ "genwealth" ],
   "author": "Tom Scanlan",
   "license": "MIT",
   "devDependencies": {

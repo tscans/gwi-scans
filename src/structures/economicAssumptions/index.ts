@@ -1,6 +1,6 @@
 import { IEconomicAssumptions, IUserAccounts } from "../..";
 import { getCurrentDateId, IConstraints, randomId } from "../helpers";
-import { EIGHTEEN_YEARS, FIFTY_YEARS, MAX_DATE, MIN_DATE, ONE_YEAR, SIXTEEN_YEARS } from "../standards";
+import { EIGHTEEN_YEARS, FIFTY_YEARS, MAX_DATE, MIN_DATE, ONE_YEAR, SEVENTY_YEARS, SIXTEEN_YEARS } from "../standards";
 
 export const structure = () : IEconomicAssumptions => ({
     autoInvestRule:true,
@@ -10,7 +10,8 @@ export const structure = () : IEconomicAssumptions => ({
     isMarried:false,
     dateIdMarriage:getCurrentDateId(),
     userBirthDateId:getCurrentDateId() - EIGHTEEN_YEARS,
-    preferredZipCode:"60655"
+    preferredZipCode:"60655",
+    preferredRetirementDateId:getCurrentDateId() - EIGHTEEN_YEARS + SEVENTY_YEARS
 });
 
 export const constraints : IConstraints = {
