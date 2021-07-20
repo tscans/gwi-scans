@@ -67,6 +67,7 @@ export interface IFamilyMembers{
 }
 
 export interface IIncomePercentChanged{
+    id:string;
     percentChangeFromBase: number;
     dateIdChange: number;
     isLinearRaise: boolean;
