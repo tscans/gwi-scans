@@ -1,6 +1,6 @@
 import { IIncome } from "../..";
 import { getCurrentDateId, IConstraints, randomId } from "../helpers";
-import { MAX_DATE, MIN_DATE, ONE_YEAR } from "../standards";
+import { FIFTY_YEARS, MAX_DATE, MIN_DATE } from "../standards";
 
 export const structure = () : IIncome => ({
     id:randomId(),
@@ -10,7 +10,7 @@ export const structure = () : IIncome => ({
     jobSalaryId: "00-0000",
     isCurrent:true,
     dateIdStart:getCurrentDateId(),
-    dateIdEnd:getCurrentDateId() + ONE_YEAR,
+    dateIdEnd:getCurrentDateId() + FIFTY_YEARS,
     customJobTitle: "My Job",
     geoState: "Illinois",
     employerMatches:false,
