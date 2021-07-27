@@ -1,11 +1,11 @@
 import { IChildren } from "../..";
 import { getCurrentDateId, IConstraints, randomId } from "../helpers";
-import { MAX_DATE, MIN_DATE, ONE_YEAR } from "../standards";
+import { MAX_DATE, MIN_DATE, TEN_YEARS } from "../standards";
 
 export const structure = () : IChildren => ({
     id:randomId(),
     childName:"My Child",
-    birthDateId:getCurrentDateId(),
+    birthDateId:getCurrentDateId() + TEN_YEARS,
     initialChildExpenses:5000,
     monthlyChildCost:1000,
     isPrivateSchool:false,
