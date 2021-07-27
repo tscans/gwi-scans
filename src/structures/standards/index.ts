@@ -1,6 +1,7 @@
 import { getCurrentDateId } from "../helpers";
 
 export const ONE_YEAR = 100;
+export const TEN_YEARS = 1000;
 export const SIXTEEN_YEARS = 1600;
 export const EIGHTEEN_YEARS = 1800;
 export const EIGHTY_YEARS = 8000;
