@@ -1,10 +1,8 @@
-import { IEconomicAssumptions, IUserAccounts } from "../..";
-import { getCurrentDateId, IConstraints, randomId } from "../helpers";
-import { EIGHTEEN_YEARS, FIFTY_YEARS, MAX_DATE, MIN_DATE, ONE_YEAR, SEVENTY_YEARS, SIXTEEN_YEARS } from "../standards";
+import { IEconomicAssumptions } from "../..";
+import { getCurrentDateId, IConstraints } from "../helpers";
+import { EIGHTEEN_YEARS, FIFTY_YEARS, MIN_DATE, SEVENTY_YEARS, SIXTEEN_YEARS } from "../standards";
 
 export const structure = () : IEconomicAssumptions => ({
-    autoInvestRule:true,
-    autoInvestLimitAmount:25000,
     inflationRate:0.02,
     taxRates:false,
     isMarried:false,
@@ -16,12 +14,6 @@ export const structure = () : IEconomicAssumptions => ({
 
 export const constraints : IConstraints = {
     numeric:{
-        autoInvestLimitAmount:{
-            min:0,
-            max:100000,
-            trueMax:100000000,
-            step:1000
-        },
         inflationRate:{
             min:0,
             max:0.1,

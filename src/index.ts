@@ -147,21 +147,25 @@ export interface ILiabilities{
     dateIdEnd:number;
 }
 
+export enum EUserAccountType{
+    investing = "Investing",
+    cashSavings = "Cash and Savings",
+    retirement = "Retirement"
+}
+
 export interface IUserAccounts{
     id:string;
     userAccountName:string;
-    cashAccounts:number;
-    investmentsBalance:number;
-    retirementInvestmentBalance:number;
-    generalInvestmentRate:number;
-    retirementInvestmentRate:number;
-    dateId:number;
-    isCurrent:boolean;
+    accountType:EUserAccountType;
+    accountValue:number;
+    projectedInvestmentRate:number;
+    isConnectedToRealAccount:boolean;
+    realAccountId:string;
+    isIncludedInCalculations:boolean;
+    lastUpdatedDateId:number;
 }
 
 export interface IEconomicAssumptions{
-    autoInvestRule:/*for auto investing cash over certain value */boolean;
-    autoInvestLimitAmount:number;
     inflationRate:number;
     //future option for inflation rate modifier for lifetime
     taxRates:boolean;//eh maybe, adding boolean for now.
