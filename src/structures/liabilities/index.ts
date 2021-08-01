@@ -1,16 +1,18 @@
 import { ELiabilityType, IIncome, ILiabilities } from "../..";
 import { getCurrentDateId, IConstraints, randomId } from "../helpers";
-import { MAX_DATE, MIN_DATE, ONE_YEAR } from "../standards";
+import { MAX_DATE, MIN_DATE, ONE_YEAR, TEN_YEARS } from "../standards";
+
+const FIVE_YEARS = ONE_YEAR * 5;
 
 export const structure = () : ILiabilities => ({
     id:randomId(),
     loanName:"My Loan",
-    loanAmount:5000,
+    loanAmount:50000,
     interestRate:0.05,
-    monthlyPayment:500,
+    monthlyPayment:530,
     loanType:ELiabilityType.student,
-    dateIdStart:getCurrentDateId(),
-    dateIdEnd:getCurrentDateId() + ONE_YEAR
+    dateIdStart:getCurrentDateId() + FIVE_YEARS,
+    dateIdEnd:getCurrentDateId() + TEN_YEARS + FIVE_YEARS
 });
 
 export const sorter = (arr:ILiabilities[],reverse:boolean) =>{
