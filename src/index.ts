@@ -1,17 +1,6 @@
-import { AnyTxtRecord } from 'dns';
-import e, { Request, Response } from 'express';
+
+import { Request, Response } from 'express';
 import { structure } from './structures/economicAssumptions';
-
-
-export interface IDemographics{
-    dob:string | null;
-    sex:string | null;
-    race:string | null;
-    state:string | null;
-    education:string | null;
-    relationship:ERelationship;
-    zipCode:string | null;
-}
 
 export enum EMonthToId{
     January = 1,
@@ -42,29 +31,6 @@ export const monthListArray = [
     "November",
     "December"
 ];
-
-export enum ERelationship{
-    Single = "Single",
-    Marries = "Married"
-}
-
-export interface IAssetContribution{
-    id:string;
-    isPreTaxDeduction:boolean;
-    assetId:string;
-    contributionIsPercent:boolean;
-    percent:number;
-    flatAmount:number;
-}
-
-export interface IFamilyMembers{
-    id:string;
-    name:string;
-    birthday:number;
-    sex:string;
-    race:string;
-    education:string;
-}
 
 export interface IIncomePercentChanged{
     id:string;
@@ -201,6 +167,15 @@ export interface IEarnings{
     shouldBeTaxed:boolean;
 }
 
+export interface IUserFuturePlans{
+    id:string;
+    dateId:number;
+    futurePlanName:string;
+    notes:string;
+    futurePlanType:string;
+    attachedIds:string[];
+}
+
 export interface IFinancialPlan{
     income:IIncome[];
     children:IChildren[];
@@ -210,8 +185,22 @@ export interface IFinancialPlan{
     expenses:IExpenses[];
     earnings:IEarnings[];
     userAccounts:IUserAccounts[];
+    userFuturePlans:IUserFuturePlans[];
     economicAssumptions:IEconomicAssumptions;
 }
+
+export const createInitialTimeline = () : IFinancialPlan => ({
+    income:[],
+    children:[],
+    budgets: [],
+    liabilities: [],
+    assets: [],
+    expenses: [],
+    earnings: [],
+    userAccounts: [],
+    userFuturePlans: [],
+    economicAssumptions: structure()
+})
 
 export enum EPlanItems {
     familyMembers = "familyMembers",
@@ -463,14 +452,3 @@ export interface IwsjResult{
     maxIncome:number;
 }
 
-export const createInitialTimeline = () : IFinancialPlan => ({
-    income:[],
-    children:[],
-    budgets: [],
-    liabilities: [],
-    assets: [],
-    expenses: [],
-    earnings: [],
-    userAccounts: [],
-    economicAssumptions: structure()
-})
