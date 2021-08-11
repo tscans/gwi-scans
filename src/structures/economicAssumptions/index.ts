@@ -9,7 +9,8 @@ export const structure = () : IEconomicAssumptions => ({
     dateIdMarriage:getCurrentDateId(),
     userBirthDateId:getCurrentDateId() - EIGHTEEN_YEARS,
     preferredZipCode:"60655",
-    preferredRetirementDateId:getCurrentDateId() - EIGHTEEN_YEARS + SEVENTY_YEARS
+    preferredRetirementDateId:getCurrentDateId() - EIGHTEEN_YEARS + SEVENTY_YEARS,
+    retirementInvestmentRate: 0.05
 });
 
 export const constraints : IConstraints = {
@@ -18,7 +19,13 @@ export const constraints : IConstraints = {
             min:0,
             max:0.1,
             trueMax:1,
-            step:0.01
+            step:0.005
+        },
+        retirementInvestmentRate:{
+            min:0,
+            max:0.15,
+            trueMax:1,
+            step:0.005
         },
     },
     dateFormat:{

@@ -133,7 +133,7 @@ export interface IUserAccounts{
 
 export interface IEconomicAssumptions{
     inflationRate:number;
-    //future option for inflation rate modifier for lifetime
+    retirementInvestmentRate:number;
     taxRates:boolean;//eh maybe, adding boolean for now.
     isMarried:boolean;
     dateIdMarriage:number;
