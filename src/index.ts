@@ -70,6 +70,7 @@ export interface IAssets{
     assetName:string;
     assetType:IAssetType;
     interestRate:number;
+    originalBalance:number;
     currentBalance:number;
     dateIdStart:number;
     dateIdEnd:number;
@@ -133,7 +134,9 @@ export interface IUserAccounts{
 
 export interface IEconomicAssumptions{
     inflationRate:number;
+    //defaults if not otherwise specified
     retirementInvestmentRate:number;
+    generalInvestmentRate:number;
     taxRates:boolean;//eh maybe, adding boolean for now.
     isMarried:boolean;
     dateIdMarriage:number;

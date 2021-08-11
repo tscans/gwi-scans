@@ -10,7 +10,8 @@ export const structure = () : IEconomicAssumptions => ({
     userBirthDateId:getCurrentDateId() - EIGHTEEN_YEARS,
     preferredZipCode:"60655",
     preferredRetirementDateId:getCurrentDateId() - EIGHTEEN_YEARS + SEVENTY_YEARS,
-    retirementInvestmentRate: 0.05
+    retirementInvestmentRate: 0.05,
+    generalInvestmentRate: 0.03
 });
 
 export const constraints : IConstraints = {

@@ -7,6 +7,7 @@ export const structure = () : IAssets => ({
     assetName:"My Asset",
     interestRate:0.03,
     currentBalance:5000,
+    originalBalance:5000,
     assetType:IAssetType.realEstate,
     isCurrent:true,
     dateIdStart:getCurrentDateId(),
@@ -42,6 +43,12 @@ export const constraints : IConstraints = {
             trueMax:50000000,
             step:5000
         },
+        originalBalance:{
+            min:0,
+            max:100000,
+            trueMax:50000000,
+            step:5000
+        }
     },
     dateFormat:{
         dateIdStart:{
