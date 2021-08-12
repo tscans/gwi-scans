@@ -117,9 +117,20 @@ export interface ILiabilities{
 export enum EUserAccountType{
     investing = "Investing",
     cashSavings = "Cash and Savings",
-    retirement = "Retirement"
+    retirement = "Retirement",
+    retirementAfterTax = "Retirement After Taxes"
 }
 
+export interface IHistoricalValueMarker{
+    value:number;
+    dateId:number;
+}
+
+export enum EAccountContributionType{
+    percentOfIncome = "Percent of Income",
+    specifiedAmount = "Specified Amount",
+    percentOfProfit = "Percent of Profit"
+}
 export interface IUserAccounts{
     id:string;
     userAccountName:string;
@@ -130,6 +141,11 @@ export interface IUserAccounts{
     realAccountId:string;
     isIncludedInCalculations:boolean;
     lastUpdatedDateId:number;
+    historicalValueMarkets:IHistoricalValueMarker[];
+    contributionType: EAccountContributionType;
+    percentOfIncome:number;
+    specifiedAmount:number;
+    percentOfProfit:number;
 }
 
 export interface IEconomicAssumptions{
