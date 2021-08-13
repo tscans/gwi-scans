@@ -12,7 +12,7 @@ export const structure = () : IUserAccounts => ({
     realAccountId: "",
     isIncludedInCalculations: true,
     lastUpdatedDateId: getCurrentDateId(),
-    historicalValueMarkets:[],
+    historicalValueMarkers:[],
     contributionType: EAccountContributionType.percentOfProfit,
     percentOfIncome: 0,
     specifiedAmount: 0,

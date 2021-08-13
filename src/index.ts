@@ -141,7 +141,7 @@ export interface IUserAccounts{
     realAccountId:string;
     isIncludedInCalculations:boolean;
     lastUpdatedDateId:number;
-    historicalValueMarkets:IHistoricalValueMarker[];
+    historicalValueMarkers:IHistoricalValueMarker[];
     contributionType: EAccountContributionType;
     percentOfIncome:number;
     specifiedAmount:number;
