@@ -124,6 +124,7 @@ export enum EUserAccountType{
 export interface IHistoricalValueMarker{
     value:number;
     dateId:number;
+    id:string;
 }
 
 export enum EAccountContributionType{
