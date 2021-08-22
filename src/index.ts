@@ -472,3 +472,9 @@ export interface IwsjResult{
     maxIncome:number;
 }
 
+export interface ISignUpBody{
+    email:string;
+    password:string;
+    firstName:string;
+    lastName:string;
+}
