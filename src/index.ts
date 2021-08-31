@@ -1,6 +1,7 @@
 
 import { Request, Response } from 'express';
 import { structure } from './structures/economicAssumptions';
+import { randomId } from './structures/helpers';
 
 export enum EMonthToId{
     January = 1,
@@ -220,7 +221,26 @@ export const createInitialTimeline = () : IFinancialPlan => ({
     userAccounts: [],
     userFuturePlans: [],
     economicAssumptions: structure()
-})
+});
+
+export const createInitialMetaPlan = (
+    ownerId:string,
+    firstName:string,
+    lastName:string
+    ) : IMetaPlans => ({
+    planId:randomId(),
+    ownerId,
+    createdAt:(new Date()).getTime(),
+    lastEdited:(new Date()).getTime(),
+    isShared:false,
+    sharedWith:[],
+    firstName,
+    lastName,
+    isPublic:false,
+    isAllowedToDuplicate:false,
+    planName:"My Plan",
+    description:""
+});
 
 export enum EPlanItems {
     familyMembers = "familyMembers",
@@ -429,17 +449,6 @@ export interface IZipData{
     unemploymentRate: number;
     usState: string;
     zipCode: string;
-}
-//data structures
-
-
-export const basicPlanLayout = {
-    familyMembers:[],
-    income:[],
-    assets:[],
-    budgets:[],
-    transfers:[],
-    liabilities:[]
 }
 
 export const demographicCategoryEntries = {
