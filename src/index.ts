@@ -224,9 +224,10 @@ export const createInitialTimeline = () : IFinancialPlan => ({
 });
 
 export const createInitialMetaPlan = (
-    ownerId:string,
-    firstName:string,
-    lastName:string
+        ownerId:string,
+        firstName:string,
+        lastName:string,
+        planId:string
     ) : IMetaPlans => ({
     planId:randomId(),
     ownerId,
