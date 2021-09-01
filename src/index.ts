@@ -229,7 +229,7 @@ export const createInitialMetaPlan = (
         lastName:string,
         planId:string
     ) : IMetaPlans => ({
-    planId:randomId(),
+    planId,
     ownerId,
     createdAt:(new Date()).getTime(),
     lastEdited:(new Date()).getTime(),
