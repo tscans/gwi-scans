@@ -210,7 +210,9 @@ export interface IFinancialPlan{
     economicAssumptions:IEconomicAssumptions;
 }
 
-export const createInitialTimeline = () : IFinancialPlan => ({
+export const createInitialTimeline = (
+    birthDateId?:number
+) : IFinancialPlan => ({
     income:[],
     children:[],
     budgets: [],
@@ -220,7 +222,7 @@ export const createInitialTimeline = () : IFinancialPlan => ({
     earnings: [],
     userAccounts: [],
     userFuturePlans: [],
-    economicAssumptions: structure()
+    economicAssumptions: structure(birthDateId)
 });
 
 export const createInitialMetaPlan = (

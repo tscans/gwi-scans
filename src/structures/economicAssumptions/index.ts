@@ -2,14 +2,14 @@ import { IEconomicAssumptions } from "../..";
 import { getCurrentDateId, IConstraints } from "../helpers";
 import { EIGHTEEN_YEARS, FIFTY_YEARS, MIN_DATE, SEVENTY_YEARS, SIXTEEN_YEARS } from "../standards";
 
-export const structure = () : IEconomicAssumptions => ({
+export const structure = (birthDateId:number = getCurrentDateId() - EIGHTEEN_YEARS) : IEconomicAssumptions => ({
     inflationRate:0.02,
     taxRates:false,
     isMarried:false,
     dateIdMarriage:getCurrentDateId(),
-    userBirthDateId:getCurrentDateId() - EIGHTEEN_YEARS,
+    userBirthDateId: birthDateId,
     preferredZipCode:"60655",
-    preferredRetirementDateId:getCurrentDateId() - EIGHTEEN_YEARS + SEVENTY_YEARS,
+    preferredRetirementDateId: birthDateId + SEVENTY_YEARS,
     retirementInvestmentRate: 0.05,
     generalInvestmentRate: 0.03
 });
