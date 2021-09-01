@@ -371,6 +371,9 @@ export interface IProfile{
     firstName:string;
     lastName:string;
     uid:string;
+    birthday:number;
+    emailVerified:boolean;
+    createdAt: number;
 }
 
 export interface IZipData{
