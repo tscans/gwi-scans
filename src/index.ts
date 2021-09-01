@@ -487,4 +487,5 @@ export interface ISignUpBody{
     password:string;
     firstName:string;
     lastName:string;
+    birthday:number;
 }
