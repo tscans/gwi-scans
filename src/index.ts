@@ -44,8 +44,7 @@ export interface IIncome{
     id:string;
     baseIncome:number;
     incomePercentChangedList:IIncomePercentChanged[];
-    jobName:string;
-    jobSalaryId:string;
+    jobId:string;
     isCurrent:boolean;
     dateIdStart:number;
     dateIdEnd:number;
