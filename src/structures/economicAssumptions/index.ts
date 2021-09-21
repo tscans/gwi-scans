@@ -8,10 +8,11 @@ export const structure = (birthDateId:number = getCurrentDateId() - EIGHTEEN_YEA
     isMarried:false,
     dateIdMarriage:getCurrentDateId(),
     userBirthDateId: birthDateId,
-    preferredZipCode:"60655",
+    preferredZipCode:"",
     preferredRetirementDateId: birthDateId + SEVENTY_YEARS,
     retirementInvestmentRate: 0.05,
-    generalInvestmentRate: 0.03
+    generalInvestmentRate: 0.03,
+    preferredPumaCode:""
 });
 
 export const constraints : IConstraints = {

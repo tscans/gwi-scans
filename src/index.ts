@@ -114,6 +114,32 @@ export interface ILiabilities{
     dateIdEnd:number;
 }
 
+export interface IHousing{
+    id:string;
+    houseName:string;
+    isRenting:boolean;
+    rentCost:number;
+    houseValue:number;
+    currentHouseValue:number;
+    houseValueInterestRate:number;
+    downPayment:number;
+    loanInterestRate:number;
+    loanAmount:number;
+    loanLengthMonths:number;
+    loanMonthlyPayment:number;
+    propertyTaxesYearly:number;
+    hoiFees:number;
+    hoaFees:number;
+    pmiFees:number;
+    monthlyPayment:number;
+    dateIdRentStart:number;
+    dateIdRentEnd:number;
+    dateIdPurchaseStart:number;
+    dateIdSellEnd:number;
+    isRentingForever:boolean;
+    isOwningForever:boolean;
+}
+
 export enum EUserAccountType{
     investing = "Investing",
     cashSavings = "Cash and Savings",
@@ -159,6 +185,7 @@ export interface IEconomicAssumptions{
     dateIdMarriage:number;
     userBirthDateId:number;
     preferredZipCode:string;
+    preferredPumaCode:string;
     preferredRetirementDateId:number;
 }
 
@@ -202,6 +229,7 @@ export interface IFinancialPlan{
     budgets:IBudgets[];
     liabilities:ILiabilities[];
     assets:IAssets[];
+    housing:IHousing[];
     expenses:IExpenses[];
     earnings:IEarnings[];
     userAccounts:IUserAccounts[];
@@ -216,6 +244,7 @@ export const createInitialTimeline = (
     children:[],
     budgets: [],
     liabilities: [],
+    housing: [],
     assets: [],
     expenses: [],
     earnings: [],
