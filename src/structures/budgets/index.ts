@@ -8,7 +8,6 @@ export const structure = () : IBudgets => ({
     health:160,
     utilities:300,
     entertainment:120,
-    housing:1200,
     auto:700,
     other:300,
     isCurrent:true,
@@ -56,12 +55,6 @@ export const constraints : IConstraints = {
             max:800,
             trueMax:10000,
             step:50
-        },
-        housing:{
-             min:0,
-             max:4000,
-             trueMax:100000,
-             step:200
         },
         auto:{
             min:0,

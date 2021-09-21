@@ -84,7 +84,6 @@ export interface IBudgets{
     health:number;
     utilities:number;
     entertainment:number;
-    housing:number;
     auto:number;
     other:number;
     isCurrent:boolean;
