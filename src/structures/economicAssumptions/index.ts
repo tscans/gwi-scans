@@ -12,7 +12,8 @@ export const structure = (birthDateId:number = getCurrentDateId() - EIGHTEEN_YEA
     preferredRetirementDateId: birthDateId + SEVENTY_YEARS,
     retirementInvestmentRate: 0.05,
     generalInvestmentRate: 0.03,
-    preferredPumaCode:""
+    preferredPumaCode:"",
+    socialSecurityBenefitsAge:67
 });
 
 export const constraints : IConstraints = {
@@ -28,7 +29,7 @@ export const constraints : IConstraints = {
             max:0.15,
             trueMax:1,
             step:0.005
-        },
+        }
     },
     dateFormat:{
         userBirthDateId:{

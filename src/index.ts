@@ -186,6 +186,7 @@ export interface IEconomicAssumptions{
     preferredZipCode:string;
     preferredPumaCode:string;
     preferredRetirementDateId:number;
+    socialSecurityBenefitsAge:number;
 }
 
 export interface IExpenses{
