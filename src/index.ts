@@ -1,7 +1,6 @@
 
 import { Request, Response } from 'express';
 import { structure } from './structures/economicAssumptions';
-import { randomId } from './structures/helpers';
 
 export enum EMonthToId{
     January = 1,
@@ -102,6 +101,15 @@ export enum ELiabilityType{
     other = "Other Loan"
 }
 
+export enum EEducationLevel{
+    highSchool = "High School",
+    someCollege = "Some College",
+    associates = "Associates",
+    bachelors = "Bachelors",
+    masters = "Masters",
+    doctorate = "Doctorate"
+}
+
 export interface ILiabilities{
     id:string;
     loanName:string;
@@ -183,10 +191,10 @@ export interface IEconomicAssumptions{
     isMarried:boolean;
     dateIdMarriage:number;
     userBirthDateId:number;
-    preferredZipCode:string;
     preferredPumaCode:string;
     preferredRetirementDateId:number;
     socialSecurityBenefitsAge:number;
+    userEducationLevel:EEducationLevel;
 }
 
 export interface IExpenses{

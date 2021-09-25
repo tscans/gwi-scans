@@ -1,4 +1,4 @@
-import { IEconomicAssumptions } from "../..";
+import { EEducationLevel, IEconomicAssumptions } from "../..";
 import { getCurrentDateId, IConstraints } from "../helpers";
 import { EIGHTEEN_YEARS, FIFTY_YEARS, MIN_DATE, SEVENTY_YEARS, SIXTEEN_YEARS } from "../standards";
 
@@ -8,12 +8,12 @@ export const structure = (birthDateId:number = getCurrentDateId() - EIGHTEEN_YEA
     isMarried:false,
     dateIdMarriage:getCurrentDateId(),
     userBirthDateId: birthDateId,
-    preferredZipCode:"",
     preferredRetirementDateId: birthDateId + SEVENTY_YEARS,
     retirementInvestmentRate: 0.05,
     generalInvestmentRate: 0.03,
     preferredPumaCode:"",
-    socialSecurityBenefitsAge:67
+    socialSecurityBenefitsAge:67,
+    userEducationLevel: EEducationLevel.bachelors
 });
 
 export const constraints : IConstraints = {
